@@ -127,7 +127,7 @@ class Base extends BaseObject
 			$options['tmbPath'] = Yii::getAlias('@webroot/' . $this->tmbPath);
 			$options['tmbURL'] = Yii::$app->request->hostInfo . Yii::getAlias('@web/'.$this->tmbPath);
 		}else{
-			$subPath = md5($this->className() . '|' . serialize($this->name));
+			$subPath = hash('sha256', $this->className().'|'.serialize($this->name));
 			$options['tmbPath'] = Yii::$app->assetManager->getPublishedPath(__DIR__) . DIRECTORY_SEPARATOR . $subPath;
 			$options['tmbURL'] = Yii::$app->request->hostInfo . Yii::$app->assetManager->getPublishedUrl(__DIR__) . '/' . $subPath;
 		}
