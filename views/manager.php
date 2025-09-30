@@ -17,6 +17,10 @@ if(!empty($options['noConflict']))
 unset($options['noConflict']);
 $options['soundPath'] = Assets::getSoundPathUrl();
 
+$cssOptions = [];
+if (isset($options['nonce']) && $options['nonce'] != null) {
+    $cssOptions['nonce'] = $options['nonce'];
+}
 
 $this->registerJs("
 function ElFinderGetCommands(disabled){
@@ -66,7 +70,7 @@ html, body {
     position: relative;
     padding: 0; margin: 0;
 }
-");
+", $cssOptions);
 
 
 
